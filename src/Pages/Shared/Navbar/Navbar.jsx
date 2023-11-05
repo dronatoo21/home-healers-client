@@ -9,7 +9,7 @@ const Navbar = () => {
         </li>
         <li>
             <button className="ml-2 border-2 rounded-xl font-semibold px-4 py-2 bg-[#1e272e] text-white hover:border-black hover:text-black">
-                <NavLink to="#">Services</NavLink>
+                <NavLink to="/services">Services</NavLink>
             </button>
         </li>
         <li>
