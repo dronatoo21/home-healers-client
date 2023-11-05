@@ -19,9 +19,16 @@ const Navbar = () => {
         {
             user &&
         <li>
-            <button className="ml-2 border-2 rounded-xl font-semibold px-4 py-2 bg-[#1e272e] text-white hover:border-black hover:text-black">
+            {/* <button className="ml-2 border-2 rounded-xl font-semibold px-4 py-2 bg-[#1e272e] text-white hover:border-black hover:text-black">
                 <NavLink to="#">Dashboard</NavLink>
-            </button>
+            </button> */}
+            <div className="dropdown dropdown-bottom dropdown-end">
+              <label tabIndex={0} className="ml-2 border-2 rounded-xl font-semibold bg-[#1e272e] text-white hover:border-black hover:text-black">Dashboard</label>
+              <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a>Item 1</a></li>
+                <li><a>Item 2</a></li>
+              </ul>
+            </div>
         </li>
         }
     </>
@@ -35,12 +42,12 @@ const Navbar = () => {
       };
     return (
         <div>
-            <div className="navbar h-[240px] md:h-56 gap-3 lg:h-32 bg-[#c7ecee] rounded-b-md md:px-5 flex flex-col lg:flex-row lg:justify-between">
+            <div className="navbar h-[240px] md:h-60 gap-3 lg:h-32 bg-[#c7ecee] rounded-b-md md:px-5 flex flex-col lg:flex-row lg:justify-between">
             <div>
                 <img className="w-14" src="https://i.ibb.co/bFZy9XX/logo.png" alt="logo" />
                 <h1 className="text-2xl md:text-3xl font-bold ml-3 text-black">HomeHealers</h1>
             </div>
-            <div className={user ? "lg:ml-[730px]" : "-ml-[180px]"}>
+            <div className="lg:-ml-14">
                 <ul className="menu menu-horizontal px-1">
                     {links}
                 </ul>
@@ -60,5 +67,4 @@ const Navbar = () => {
         </div>
     );
 };
-
 export default Navbar;
