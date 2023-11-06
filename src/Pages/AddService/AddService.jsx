@@ -15,7 +15,8 @@ const AddService = () => {
         const price = form.price.value;
         const description = form.description.value;
         const serviceArea = form.serviceArea.value;
-        const newService = {pictureUrl, yourName, yourEmail, price, description, serviceName, serviceArea} 
+        const yourImage = user?.photoURL;
+        const newService = {pictureUrl, yourImage, yourName, yourEmail, price, description, serviceName, serviceArea} 
         console.log(newService);
 
         fetch('http://localhost:4000/services', {
