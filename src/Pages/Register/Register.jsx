@@ -55,6 +55,7 @@ const Register = () => {
     }
     return (
         <div className="my-5">
+           <h1 className="text-3xl font-semibold text-center">Please Register!</h1>
             <div className="hero my-10">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                   <form onSubmit={handleRegister} className="card-body">

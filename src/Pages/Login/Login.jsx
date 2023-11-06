@@ -49,6 +49,7 @@ const Login = () => {
 
     return (
         <div className="my-5">
+          <h1 className="text-3xl font-semibold text-center">Please Login!</h1>
             <div className="hero my-10">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                   <form onSubmit={handleLogin} className="card-body">
@@ -68,11 +69,11 @@ const Login = () => {
                       </label>
                     </div>
                     <div className="form-control mt-6">
-                      <button className="btn btn-primary">Login</button>
+                      <button className="btn btn-neutral">Login</button>
                     </div>
                   </form>
                   <p className="text-center font-medium -mt-7 mb-1">or</p>
-                  <button onClick={handleGoogleSignIn} className="btn btn-primary mx-8 mb-5">Login With Google</button>
+                  <button onClick={handleGoogleSignIn} className="btn btn-neutral mx-8 mb-5">Login With Google</button>
                   {
                     loginError && <p className="text-red-700 px-8 pb-5">{loginError}</p>
                   }
