@@ -18,17 +18,12 @@ const Navbar = () => {
         </li>
         {
             user &&
-        <li>
-            {/* <button className="ml-2 border-2 rounded-xl font-semibold px-4 py-2 bg-[#1e272e] text-white hover:border-black hover:text-black">
-                <NavLink to="#">Dashboard</NavLink>
-            </button> */}
-            <div className="dropdown dropdown-bottom dropdown-end">
+        <li className="dropdown dropdown-bottom dropdown-end border-black border-1">
               <label tabIndex={0} className="ml-2 border-2 rounded-xl font-semibold bg-[#1e272e] text-white hover:border-black hover:text-black">Dashboard</label>
-              <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                <li><a>Item 1</a></li>
-                <li><a>Item 2</a></li>
+              <ul tabIndex={0} className="dropdown-content z-[1] menu mt-2 p-2 shadow bg-base-100 rounded-box w-52">
+                <li><Link>Item 1</Link></li>
+                <li><Link>Item 2</Link></li>
               </ul>
-            </div>
         </li>
         }
     </>
