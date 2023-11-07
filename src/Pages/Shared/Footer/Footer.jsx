@@ -1,7 +1,7 @@
 import { FaFacebook, FaTwitter, FaInstagram, FaLocationArrow, FaPhone } from 'react-icons/fa';
 const Footer = () => {
     return (
-        <div className=" bg-[#f7f1e3] font-normal text-base pb-5">
+        <div className=" bg-[#f7f1e3] rounded-t-md font-normal text-base pb-5">
             <footer className="footer p-10 text-base-content">
               <aside className='space-y-1'>
               <img className="w-14" src="https://i.ibb.co/bFZy9XX/logo.png" alt="logo" />

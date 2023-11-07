@@ -38,7 +38,7 @@ const Navbar = () => {
       };
     return (
         <div>
-            <div className="navbar h-[240px] md:h-60 gap-3 lg:h-32 bg-[#f0e0bd] md:px-10 flex flex-col lg:flex-row lg:justify-between">
+            <div className="navbar h-[240px] md:h-60 gap-3 lg:h-32 bg-[#f0e0bd] rounded-md md:px-10 flex flex-col lg:flex-row lg:justify-between">
             <div>
                 <img className="w-14" src="https://i.ibb.co/bFZy9XX/logo.png" alt="logo"/>
                 <h1 className="text-2xl md:text-3xl font-bold ml-3 text-black">HomeHealers</h1>
