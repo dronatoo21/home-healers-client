@@ -25,9 +25,11 @@ const Services = () => {
             </div>
             <h1 className="font-bold text-3xl text-center mt-5 mb-2">All Services</h1>
             {
-               searchedProducts.length ? searchedProducts?.slice(0, dataLength).map(service => <ServiceCard key={service._id} service={service}/>) : <ServiceNotFound />
+               searchedProducts.length ? searchedProducts?.slice(0, dataLength).map(service => <ServiceCard key={service._id} service={service}/>) : <ServiceNotFound/>
             }
-           <div className={dataLength === searchedProducts.length ? "hidden" : "flex justify-center my-5"}><button onClick={() => setDataLength(searchedProducts.length)} className="btn btn-neutral">View All</button></div>
+            {
+             searchedProducts.length >= 6 ? <div className={dataLength === searchedProducts.length ? "hidden" : "flex justify-center my-5"}><button onClick={() => setDataLength(searchedProducts.length)} className="btn btn-neutral">View All</button></div> : ""
+            }
         </div>
     );
 };
