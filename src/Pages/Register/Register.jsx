@@ -91,7 +91,7 @@ const Register = () => {
                         <label  className="ml-3" htmlFor="terms">Accept our <a className="text-purple-700 font-medium" href="#">terms and conditions!</a></label>
                     </div>
                     <div className="form-control mt-6">
-                      <button className="btn btn-primary">Register</button>
+                      <button className="btn btn-neutral">Register</button>
                     </div>
                   </form>
                   {

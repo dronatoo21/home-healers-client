@@ -1,6 +1,6 @@
 const ContactUs = () => {
     return (
-        <div className="p-10 lg:p-0">
+        <div className="p-5 lg:p-0">
             <div className="hero lg:h-[650px] bg-[#e4eef4] rounded-lg lg:my-16">
               <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left ">
