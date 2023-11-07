@@ -1,12 +1,12 @@
 const ContactUs = () => {
     return (
-        <div>
-            <div className="hero h-[650px] bg-[#e4eef4] rounded-lg my-16">
+        <div className="p-10 lg:p-0">
+            <div className="hero lg:h-[650px] bg-[#e4eef4] rounded-lg lg:my-16">
               <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className="text-center lg:text-left">
-                  <img className="h-[600px] w-[800px]" src="https://i.ibb.co/Nn1GDZb/contact.jpg" alt="contact" />
+                <div className="text-center lg:text-left ">
+                  <img className="lg:h-[600px] md:h-[300px] md:w-[400px] lg:w-[800px]" src="https://i.ibb.co/Nn1GDZb/contact.jpg" alt="contact" />
                 </div>               
-                <div className="flex-shrink-0 w-full rounded-tl-[50px] rounded-br-[50px] max-w-sm  m-14">
+                <div className="flex-shrink-0 w-full rounded-tl-[50px] rounded-br-[50px] max-w-sm  lg:m-14">
                   <form className="card-body">
                     <h1 className="text-3xl mb-10 text-[#5f5fa3] font-semibold">Contact US</h1>
                     <div className="form-control">
