@@ -7,7 +7,7 @@ const AboutUs = () => {
               <div className="hero-content flex-col lg:gap-10 lg:flex-row-reverse">
                 <Lottie className="w-1/2" animationData={starAnim}/>
                 <div className="text-center lg:text-start">
-                  <h1 className="text-5xl font-bold">About Us!</h1>
+                  <h1 className="text-5xl text-black font-bold">About Us!</h1>
                   <p className="py-6">At HomeHealers, we are dedicated to enhancing your homes comfort and functionality. Our experienced professionals provide a range of offline home services, from repairs to maintenance, with a focus on expertise, reliability, and affordability. Your satisfaction is our priority. Trust HomeHealers to make your house a better home.</p>
                 </div>
               </div>
