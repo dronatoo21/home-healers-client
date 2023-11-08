@@ -3,6 +3,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { useState } from "react";
 import { useEffect } from "react";
 import MyServicesCard from "./MyServicesCard";
+import { Helmet } from "react-helmet";
 
 const MyServices = () => {
     const {user} = useContext(AuthContext);
@@ -19,6 +20,11 @@ const MyServices = () => {
 
     return (
         <div className="my-10">
+        <Helmet>
+                <meta charSet="utf-8" />
+                <title>HomeHealers | Manage services</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+        </Helmet>
         <h1 className="font-bold text-3xl text-center mt-16 mb-5">Manage Services!</h1>
             {
                 myAllServices?.map(myService => <MyServicesCard key={myService?._id} myService={myService} myAllServices={myAllServices}  setMyAllServices={setMyAllServices}/>)

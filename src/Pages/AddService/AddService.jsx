@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AddService = () => {
     const [area, setArea] = useState();
@@ -41,6 +42,11 @@ const AddService = () => {
 }
     return (
         <div>
+          <Helmet>
+                <meta charSet="utf-8" />
+                <title>HomeHealers | Add service</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+          </Helmet>
          <div className="my-5 p-5">
           <h1 className="text-3xl font-semibold text-center">Please Add a Service!</h1>
             <div className="hero my-5 shadow-md rounded-md">

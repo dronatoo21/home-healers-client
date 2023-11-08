@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import AboutUs from "./AboutUs";
 import Banner from "./Banner";
 import ContactUs from "./ContactUs";
@@ -8,6 +9,11 @@ import PopularServices from "./PopularServices";
 const Home = () => {
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>HomeHealers | Home</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <Banner/>
             <h1 className="font-bold text-3xl text-center mt-14 mb-2">Popular Services</h1>
             <PopularServices/>
