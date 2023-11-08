@@ -21,7 +21,7 @@ const Navbar = () => {
         <li className="dropdown dropdown-bottom dropdown-end border-black border-1">
               <label tabIndex={0} className="ml-2 border-2 rounded-xl font-semibold border-none bg-[#1e272e] text-white hover:text-black">Dashboard</label>
               <ul tabIndex={0} className="dropdown-content z-[1] menu mt-2 p-2 shadow bg-base-100 rounded-box w-52">
-                <li><Link to="#">My Services</Link></li>
+                <li><Link to="/myServices">My Services</Link></li>
                 <li><Link to="/addservice">Add Services</Link></li>
                 <li><Link to="#">My Schedules</Link></li>
               </ul>

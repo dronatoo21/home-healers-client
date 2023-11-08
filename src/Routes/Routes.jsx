@@ -7,6 +7,7 @@ import Register from "../Pages/Register/Register";
 import AddService from "../Pages/AddService/AddService";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
+import MyServices from "../Pages/MyServices/MyServices";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path: '/addservice',
                 element: <PrivateRoute><AddService/></PrivateRoute>
+            },
+            {
+                path: '/myServices',
+                element: <PrivateRoute><MyServices/></PrivateRoute>
             }
         ]
     }
