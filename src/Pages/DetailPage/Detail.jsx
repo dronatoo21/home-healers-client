@@ -4,12 +4,12 @@ import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import OtherServicesCard from "./OtherServicesCard";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { toast } from "react-toastify";
 
 const Detail = () => {
     const {user} = useContext(AuthContext)
     const {id} = useParams();
     const [service, setService] = useState();
-    // const {pictureUrl, serviceName, description, serviceArea, price} = service;
     const idURL = `http://localhost:4000/services/${id}`
     useEffect(() => {
         fetch(idURL)
@@ -30,6 +30,38 @@ const Detail = () => {
         })
     },[emailURL])
 
+        const handleBookService = e => {
+            e.preventDefault();
+            const form = e.target;
+            const pictureUrl = form.pictureUrl.value;
+            const userName = user?.displayName;
+            const userEmail = user?.email;
+            const serviceName = form.serviceName.value;
+            const providerEamil = form.providerEmail.value;
+            const price = form.price.value;
+            const serviceTakingDate = form.date.value;
+            const description = form.description.value;
+            const serviceArea = form.serviceArea.value;
+            const specialInstruction = form.specialInstruction.value;
+            const yourImage = user?.photoURL;
+            const bookService = {pictureUrl, yourImage, userName, userEmail, price, description, serviceName, serviceArea, providerEamil, serviceTakingDate, specialInstruction} 
+            console.log(bookService);
+    
+            fetch('http://localhost:4000/bookings', {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(bookService)
+            })
+            .then(res => res.json())
+            .then(data =>{
+              console.log(data);
+              if(data.insertedId){
+                toast('Service Booked successfully')
+              }
+            })
+        }
     return (
         <div className="my-8 mx-5 lg:mx-0">
             <Helmet>
@@ -67,16 +99,10 @@ const Detail = () => {
                     <h2 className="card-title font-semibold"><span className="font-medium">Service : </span>{service?.serviceName}</h2>
                     <p className="font-normal"><span className="font-medium">Description : </span>{service?.description}</p>
                     <p className="font-bold"><span className="font-medium">Price : </span>{service?.price} BDT</p>
-                    <div className="card-actions justify-end">
-                      {/* The button to open modal */}
-                        <a href="#my_modal_8" className="btn btn-neutral">Book Now</a>
-                        {/* Put this part before </body> tag */}
-                        <div className="modal" id="my_modal_8">
-                          <div className="">
-                          <div className="hero my-5  shadow-md rounded-md">
-                            {/* input */}
-                            <div className="flex-shrink-0 w-full bg-base-100 rounded-md">
-                              <form  className="card-body ">
+                    <button className="btn btn-neutral my-5" onClick={()=>document.getElementById('my_modal_2').showModal()}>Book Now</button>
+                    <dialog id="my_modal_2" className="modal">
+                      <div className="modal-box">
+                      <form onSubmit={handleBookService} className="card-body ">
                                 <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-5 px-5">
                                 <div className="form-control">
                                   <label className="label">
@@ -88,7 +114,7 @@ const Detail = () => {
                                   <label className="label">
                                     <span className="label-text">Your Name</span>
                                   </label>
-                                  <input type="text" name="yourName" defaultValue={user?.displayName} className="input input-bordered" readOnly required />
+                                  <input type="text" name="userName" defaultValue={user?.displayName} className="input input-bordered" readOnly required />
                                 </div>
                                 <div className="form-control">
                                   <label className="label">
@@ -100,13 +126,13 @@ const Detail = () => {
                                   <label className="label">
                                     <span className="label-text">Your E-mail</span>
                                   </label>
-                                  <input type="email" name="email" defaultValue={user?.email} className="input input-bordered" readOnly required />
+                                  <input type="email" name="userEmail" defaultValue={user?.email} className="input input-bordered" readOnly required />
                                 </div>
                                 <div className="form-control">
                                   <label className="label">
                                     <span className="label-text">Service provider E-mail</span>
                                   </label>
-                                  <input type="email" name="email" defaultValue={service?.yourEmail} className="input input-bordered" readOnly required />
+                                  <input type="email" name="providerEmail" defaultValue={service?.yourEmail} className="input input-bordered" readOnly required />
                                 </div>
                                 <div className="form-control">
                                   <label className="label">
@@ -138,20 +164,16 @@ const Detail = () => {
                                   </label>
                                   <textarea type="text" placeholder="Address / area / customized service plan" name="specialInstruction" className="input input-bordered pt-3 h-20" required />
                                 </div>
-                                
                                 </div>
-                                <div className="form-control">
-                                  <button type="submit" className="btn btn-neutral mx-5 mt-5">Add Service</button>
+                                <div className="form-control modal-action">
+                                  <button type="submit" className="btn btn-neutral mx-5 mt-5 ">Purchase the service</button>
                                 </div>
                               </form>
-                            </div>
-                        </div>
-                        <div className="modal-action">
-                         <a href="#" className="btn btn-neutral">Purchase this Service</a>
-                        </div>
                       </div>
-                    </div>
-                </div>
+                      <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                      </form>
+                    </dialog>
               </div>
             </div>
             {/* other services */}
