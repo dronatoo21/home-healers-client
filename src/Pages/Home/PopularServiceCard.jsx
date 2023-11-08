@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const PopularServiceCard = ({service}) => {
-    const {pictureUrl, yourName, serviceName, description, price, yourImage} = service;
+    const {_id, pictureUrl, yourName, serviceName, description, price, yourImage} = service;
     return (
         <div className="mb-3">
             <div className="card lg:card-side lg:h-[400px] bg-base-100 shadow-xl lg:px-10">
@@ -18,11 +18,11 @@ const PopularServiceCard = ({service}) => {
                 </div>
                 <h2 className="card-title font-semibold"><span className="font-medium">Service : </span>{serviceName}</h2>
                 {
-                    description.length > 100 ? <p className="font-normal"><span className="font-medium">Description : </span>{description.slice(0,100)} <Link to="#" className="text-blue-800 font-semibold">Read more...</Link></p> : <p>{description}</p>
+                    description.length > 100 ? <p className="font-normal"><span className="font-medium">Description : </span>{description.slice(0,100)} <Link to="#" className="text-blue-800 font-semibold">Read more...</Link></p> :  <p className="font-normal"><span className="font-medium">Description : </span>{description}</p>
                 }
-                <p className="font-normal"><span className="font-medium">Price : </span>{price} BDT</p>
+                <p className="font-bold"><span className="font-medium">Price : </span>{price} BDT</p>
                 <div className="card-actions lg:justify-end ">
-                  <button className="btn btn-neutral my-3 lg:my-0">View Detail</button>
+                  <Link to={`/detail/${_id}`}><button className="btn btn-neutral my-3 lg:my-0">View Detail</button></Link>
                 </div>
               </div>
             </div>
