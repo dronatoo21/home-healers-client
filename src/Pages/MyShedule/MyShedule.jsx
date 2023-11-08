@@ -4,6 +4,7 @@ import MySheduleCard from "./MySheduleCard";
 import { Helmet } from "react-helmet";
 import PendingRow from "./PendingRow";
 import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const MyShedule = () => {
     const {user} = useContext(AuthContext);
@@ -62,6 +63,28 @@ const MyShedule = () => {
           });
     }
 
+    const handleConfirm = id => {
+        fetch(`http://localhost:4000/bookings/${id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({status: 'confirm'})
+        })
+        .then(res => res.json())
+            .then(data => {
+              console.log(data);
+              if(data.modifiedCount > 0){
+                toast('confirmed service')
+                const remaining = pending.filter(booking => booking._id !== id)
+                const updated = pending.find(booking => booking._id === id)
+                updated.status = 'confirm'
+                const newBookings = [updated, ...remaining]
+                setPending(newBookings)
+              }
+            })  
+      }
+
     return (
         <div>
             <Helmet>
@@ -98,7 +121,7 @@ const MyShedule = () => {
                     <tbody>
                       {/* row 1 */}
                       {
-                        pending?.map(req => <PendingRow key={req?._id} req={req} handleDelete={handleDelete}/>)
+                        pending?.map(req => <PendingRow key={req?._id} req={req} handleDelete={handleDelete} handleConfirm={handleConfirm}/>)
                       }
                     </tbody>
                   </table>

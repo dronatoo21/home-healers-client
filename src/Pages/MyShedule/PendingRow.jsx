@@ -1,4 +1,4 @@
-const PendingRow = ({req, handleDelete}) => {
+const PendingRow = ({req, handleDelete, handleConfirm}) => {
     const {_id, pictureUrl, serviceName, userEmail, serviceTakingDate, price} = req
 
     return (
@@ -22,7 +22,11 @@ const PendingRow = ({req, handleDelete}) => {
             <td>{serviceTakingDate}</td>
             <td>{price}</td>
             <th>
-              <button className="btn btn-ghost btn-xs">details</button>
+                <select>
+                    <option><button className="btn btn-neutral">Pending</button></option>
+                    <option ><button className="btn btn-neutral">In progress</button></option>
+                    <option onClick={()=> handleConfirm(_id)}><button className="btn btn-neutral">Completed</button></option>
+                </select>
             </th>
         </tr>
     );
