@@ -10,7 +10,7 @@ const Detail = () => {
     const {user} = useContext(AuthContext)
     const {id} = useParams();
     const [service, setService] = useState();
-    const idURL = `homehealers-project-server.vercel.app/services/${id}`
+    const idURL = `https://homehealers-project-server.vercel.app/services/${id}`
     useEffect(() => {
         fetch(idURL)
         .then(res => res.json())
@@ -20,7 +20,7 @@ const Detail = () => {
     }, [idURL])
 
     const [providerServices, setProviderServices] = useState([]);
-    const emailURL = `homehealers-project-server.vercel.app/myServices?yourEmail=${service?.yourEmail}`;
+    const emailURL = `https://homehealers-project-server.vercel.app/myServices?yourEmail=${service?.yourEmail}`;
     useEffect(()=>{
         fetch(emailURL)
         .then(res => res.json())
@@ -47,7 +47,7 @@ const Detail = () => {
             const bookService = {pictureUrl, yourImage, userName, userEmail, price, description, serviceName, serviceArea, providerEamil, serviceTakingDate, specialInstruction} 
             console.log(bookService);
     
-            fetch('homehealers-project-server.vercel.app/bookings', {
+            fetch('https://homehealers-project-server.vercel.app/bookings', {
             method: 'POST',
             headers: {
               'content-type': 'application/json'

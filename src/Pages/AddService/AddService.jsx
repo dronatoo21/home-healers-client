@@ -20,7 +20,7 @@ const AddService = () => {
         const newService = {pictureUrl, yourImage, yourName, yourEmail, price, description, serviceName, serviceArea} 
         console.log(newService);
 
-        fetch('homehealers-project-server.vercel.app/services', {
+        fetch('https://homehealers-project-server.vercel.app/services', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
