@@ -15,7 +15,7 @@ const MyServicesCard = ({myService, myAllServices, setMyAllServices}) => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-            fetch(`https://home-healers.web.app/myServices/${_id}`, {
+            fetch(`homehealers-project-server.vercel.app/myServices/${_id}`, {
                 method: "DELETE",
             })
             .then(res => res.json())
