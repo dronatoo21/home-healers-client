@@ -21,7 +21,7 @@ const MyServices = () => {
         <div className="my-10">
         <h1 className="font-bold text-3xl text-center mt-16 mb-5">Manage Services!</h1>
             {
-                myAllServices?.map(myService => <MyServicesCard key={myService?._id} myService={myService}/>)
+                myAllServices?.map(myService => <MyServicesCard key={myService?._id} myService={myService} myAllServices={myAllServices}  setMyAllServices={setMyAllServices}/>)
             }
         </div>
     );

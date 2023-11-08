@@ -1,8 +1,39 @@
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const MyServicesCard = ({myService}) => {
+const MyServicesCard = ({myService, myAllServices, setMyAllServices}) => {
 
-    const {pictureUrl, yourName, serviceName, description, serviceArea, price, yourImage} = myService;
+    const {_id, pictureUrl, yourName, serviceName, description, serviceArea, price, yourImage} = myService;
+    const handleDelete = (_id) => {
+        console.log(_id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+            fetch(`http://localhost:4000/myServices/${_id}`, {
+                method: "DELETE",
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.deletedCount > 0) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your service has been deleted.",
+                        icon: "success"
+                      });
+                    const remaining = myAllServices.filter(service => service._id !== _id)
+                    setMyAllServices(remaining);
+                }
+            })
+            }
+          });
+    }
 
     return (
         <div className="mb-3">
@@ -26,7 +57,7 @@ const MyServicesCard = ({myService}) => {
                 <p className="font-bold text-lg"><span className="font-medium">Price : </span>{price} BDT</p>
                 <div className="card-actions lg:justify-end ">
                   <button className="btn btn-neutral my-3 lg:my-0">Update</button>
-                  <button className="btn btn-neutral my-3 lg:my-0">Delete</button>
+                  <button  onClick={() => handleDelete(_id)} className="btn btn-neutral my-3 lg:my-0">Delete</button>
                 </div>
               </div>
             </div>
