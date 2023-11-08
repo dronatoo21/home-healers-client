@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MyServicesCard = ({myService, myAllServices, setMyAllServices}) => {
-
     const {_id, pictureUrl, yourName, serviceName, description, serviceArea, price, yourImage} = myService;
     const handleDelete = (_id) => {
         console.log(_id);
@@ -34,7 +33,6 @@ const MyServicesCard = ({myService, myAllServices, setMyAllServices}) => {
             }
           });
     }
-
     return (
         <div className="mb-3">
             <div className="card lg:card-side lg:h-[400px] bg-base-100 shadow-xl lg:px-10">
@@ -56,8 +54,10 @@ const MyServicesCard = ({myService, myAllServices, setMyAllServices}) => {
                 }
                 <p className="font-bold text-lg"><span className="font-medium">Price : </span>{price} BDT</p>
                 <div className="card-actions lg:justify-end ">
-                  <button className="btn btn-neutral my-3 lg:my-0">Update</button>
-                  <button  onClick={() => handleDelete(_id)} className="btn btn-neutral my-3 lg:my-0">Delete</button>
+                    <Link to={`/updateService/${_id}`}>
+                        <button className="btn btn-neutral my-3 lg:my-0">Update</button>
+                    </Link>
+                    <button  onClick={() => handleDelete(_id)} className="btn btn-neutral my-3 lg:my-0">Delete</button>
                 </div>
               </div>
             </div>
