@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import MyServices from "../Pages/MyServices/MyServices";
 import UpdateService from "../Pages/UpdateService/UpdateService";
 import Detail from "../Pages/DetailPage/Detail";
+import MyShedule from "../Pages/MyShedule/MyShedule";
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
                 path: '/detail/:id',
                 element: <PrivateRoute><Detail/></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:4000/myServices/${params.id}`)
+            },
+            {
+                path: '/myBookings',
+                element: <PrivateRoute><MyShedule/></PrivateRoute>
             }
         ]
     }

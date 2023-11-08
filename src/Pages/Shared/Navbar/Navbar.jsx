@@ -23,7 +23,7 @@ const Navbar = () => {
               <ul tabIndex={0} className="dropdown-content z-[1] menu mt-2 p-2 shadow bg-base-100 rounded-box w-52">
                 <li><Link to="/myServices">My Services</Link></li>
                 <li><Link to="/addservice">Add Services</Link></li>
-                <li><Link to="#">My Schedules</Link></li>
+                <li><Link to="/myBookings">My Schedules</Link></li>
               </ul>
         </li>
         }
