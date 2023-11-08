@@ -25,7 +25,7 @@ const router = createBrowserRouter([
             {
                 path: '/services',
                 element: <Services/>,
-                loader: () => fetch('http://localhost:4000/services')
+                loader: () => fetch('https://home-healers.web.app/services')
             },
             {
                 path: '/login',
@@ -46,12 +46,12 @@ const router = createBrowserRouter([
             {
                 path: '/updateService/:id',
                 element: <PrivateRoute><UpdateService/></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:4000/myServices/${params.id}`)
+                loader: ({params}) => fetch(`https://home-healers.web.app/myServices/${params.id}`)
             },
             {
                 path: '/detail/:id',
                 element: <PrivateRoute><Detail/></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:4000/myServices/${params.id}`)
+                loader: ({params}) => fetch(`https://home-healers.web.app/myServices/${params.id}`)
             },
             {
                 path: '/myBookings',

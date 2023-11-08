@@ -11,7 +11,7 @@ const MyShedule = () => {
     const [myBookings, setMyBookings] = useState([]);
     const [pending, setPending] = useState([]);
 
-    const URL = `http://localhost:4000/myBookings?userEmail=${user?.email}`;
+    const URL = `https://home-healers.web.app/myBookings?userEmail=${user?.email}`;
     useEffect(()=>{
         fetch(URL)
         .then(res => res.json())
@@ -22,7 +22,7 @@ const MyShedule = () => {
     },[URL])
     console.log(myBookings);
 
-    const bookingsURL = `http://localhost:4000/bookings?providerEamil=${user.email}`;
+    const bookingsURL = `https://home-healers.web.app/bookings?providerEamil=${user.email}`;
     useEffect(()=>{
         fetch(bookingsURL)
         .then(res => res.json())
@@ -43,7 +43,7 @@ const MyShedule = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-            fetch(`http://localhost:4000/bookings/${id}`, {
+            fetch(`https://home-healers.web.app/bookings/${id}`, {
                 method: "DELETE",
             })
             .then(res => res.json())
@@ -64,7 +64,7 @@ const MyShedule = () => {
     }
 
     const handleConfirm = id => {
-        fetch(`http://localhost:4000/bookings/${id}`, {
+        fetch(`https://home-healers.web.app/bookings/${id}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',

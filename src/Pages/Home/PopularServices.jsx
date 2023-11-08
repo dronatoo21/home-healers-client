@@ -7,7 +7,7 @@ const PopularServices = () => {
     const [services, setServices] = useState();
 
     useEffect(() => {
-        fetch('http://localhost:4000/services')
+        fetch('https://home-healers.web.app/services')
         .then(res => res.json())
         .then(data => setServices(data))
     },[])

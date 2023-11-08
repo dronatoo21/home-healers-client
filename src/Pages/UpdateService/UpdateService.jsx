@@ -21,7 +21,7 @@ const UpdateService = () => {
         const description = form.description.value;
         const serviceArea = form.serviceArea.value;
         const updatedService = {pictureUrl, yourImage, yourName, yourEmail, price, description, serviceName, serviceArea} 
-        fetch(`http://localhost:4000/myServices/${_id}`, {
+        fetch(`https://home-healers.web.app/myServices/${_id}`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json'
