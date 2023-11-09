@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet";
 const MyServices = () => {
     const {user} = useContext(AuthContext);
     const [myAllServices, setMyAllServices] = useState([]);
-    const URL = `https://homehealers-project-server.vercel.app/myServices?yourEmail=${user?.email}`;
+    const URL = `https://homehealers-project-server-ten.vercel.app/myServices?yourEmail=${user?.email}`;
     useEffect(()=>{
         fetch(URL)
         .then(res => res.json())

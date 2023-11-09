@@ -25,7 +25,7 @@ const router = createBrowserRouter([
             {
                 path: '/services',
                 element: <Services/>,
-                loader: () => fetch('https://homehealers-project-server.vercel.app/services')
+                loader: () => fetch('https://homehealers-project-server-ten.vercel.app/services')
             },
             {
                 path: '/login',
@@ -46,12 +46,12 @@ const router = createBrowserRouter([
             {
                 path: '/updateService/:id',
                 element: <PrivateRoute><UpdateService/></PrivateRoute>,
-                loader: ({params}) => fetch(`https://homehealers-project-server.vercel.app/myServices/${params.id}`)
+                loader: ({params}) => fetch(`https://homehealers-project-server-ten.vercel.app/myServices/${params.id}`)
             },
             {
                 path: '/detail/:id',
                 element: <PrivateRoute><Detail/></PrivateRoute>,
-                loader: ({params}) => fetch(`https://homehealers-project-server.vercel.app/myServices/${params.id}`)
+                loader: ({params}) => fetch(`https://homehealers-project-server-ten.vercel.app/myServices/${params.id}`)
             },
             {
                 path: '/myBookings',

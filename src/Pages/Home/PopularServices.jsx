@@ -7,7 +7,7 @@ const PopularServices = () => {
     const [services, setServices] = useState();
 
     useEffect(() => {
-        fetch('https://homehealers-project-server.vercel.app/services')
+        fetch('https://homehealers-project-server-ten.vercel.app/services')
         .then(res => res.json())
         .then(data => setServices(data))
     },[])

@@ -21,7 +21,7 @@ const UpdateService = () => {
         const description = form.description.value;
         const serviceArea = form.serviceArea.value;
         const updatedService = {pictureUrl, yourImage, yourName, yourEmail, price, description, serviceName, serviceArea} 
-        fetch(`https://homehealers-project-server.vercel.app/myServices/${_id}`, {
+        fetch(`https://homehealers-project-server-ten.vercel.app/myServices/${_id}`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json'
