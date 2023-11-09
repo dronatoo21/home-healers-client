@@ -10,7 +10,7 @@ const MyShedule = () => {
     const [myBookings, setMyBookings] = useState([]);
     const [orders, setOrders] = useState([]);
 
-    const URL = `http://localhost:4000/myBookings?userEmail=${user?.email}`;
+    const URL = `https://homehealers-project-server-ten.vercel.app/myBookings?userEmail=${user?.email}`;
     useEffect(()=>{
         fetch(URL)
         .then(res => res.json())
@@ -19,7 +19,7 @@ const MyShedule = () => {
         })
     },[URL])
 
-    const orderURL = `http://localhost:4000/orders?providerEamil=${user.email}`;
+    const orderURL = `https://homehealers-project-server-ten.vercel.app/orders?providerEamil=${user.email}`;
     useEffect(()=>{
         fetch(orderURL)
         .then(res => res.json())
@@ -39,7 +39,7 @@ const MyShedule = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-            fetch(`http://localhost:4000/bookings/${id}`, {
+            fetch(`https://homehealers-project-server-ten.vercel.app/bookings/${id}`, {
                 method: "DELETE",
             })
             .then(res => res.json())

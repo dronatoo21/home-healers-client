@@ -11,7 +11,7 @@ const Detail = () => {
     const {id} = useParams();
     const [service, setService] = useState();
     const [providerServices, setProviderServices] = useState([]);
-    const idURL = `http://localhost:4000/services/${id}`
+    const idURL = `https://homehealers-project-server-ten.vercel.app/services/${id}`
     useEffect(() => {
         fetch(idURL)
         .then(res => res.json())
@@ -20,7 +20,7 @@ const Detail = () => {
         })
     }, [idURL])
 
-    const emailURL = `http://localhost:4000/myServices?yourEmail=${service?.yourEmail}`;
+    const emailURL = `https://homehealers-project-server-ten.vercel.app/myServices?yourEmail=${service?.yourEmail}`;
     useEffect(()=>{
         fetch(emailURL)
         .then(res => res.json())
@@ -47,7 +47,7 @@ const Detail = () => {
             const bookService = {pictureUrl, yourImage, userName, userEmail, price, description, serviceName, serviceArea, providerEamil, serviceTakingDate, specialInstruction} 
             console.log(bookService);
     
-            fetch('http://localhost:4000/bookings', {
+            fetch('https://homehealers-project-server-ten.vercel.app/bookings', {
             method: 'POST',
             headers: {
               'content-type': 'application/json'

@@ -6,7 +6,7 @@ const PendingRow = ({req, handleDelete}) => {
     const [status, setStatus] = useState(req.status);
 
     useEffect(() =>{
-        fetch(`http://localhost:4000/orders/${_id}`, {
+        fetch(`https://homehealers-project-server-ten.vercel.app/orders/${_id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({status: status}) 
