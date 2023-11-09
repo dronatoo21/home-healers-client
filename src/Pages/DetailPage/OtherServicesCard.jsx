@@ -4,9 +4,9 @@ const OtherServicesCard = ({service}) => {
     const {_id, pictureUrl, yourName, serviceName, description, price, yourImage} = service;
     return (
         <div className="mb-3">
-            <div className="card lg:card-side lg:h-[400px] bg-base-100 shadow-xl lg:px-10">
+            <div className="card lg:card-side md:h-[500px] lg:h-[400px] bg-base-100 shadow-xl lg:px-10">
                 <figure className="lg:w-1/3"><img className="w-full rounded-md lg:h-64" src={pictureUrl} alt="img"/></figure>
-                <div className="w-8/12 ml-5 my-auto space-y-3 py-5">
+                <div className="lg:w-8/12 ml-5 my-auto space-y-3 py-5">
                 <div className="flex items-center gap-3">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <img className="rounded-full" src={yourImage} alt="img" />

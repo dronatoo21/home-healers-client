@@ -4,33 +4,29 @@ import MySheduleCard from "./MySheduleCard";
 import { Helmet } from "react-helmet";
 import PendingRow from "./PendingRow";
 import Swal from "sweetalert2";
-import { toast } from "react-toastify";
 
 const MyShedule = () => {
     const {user} = useContext(AuthContext);
     const [myBookings, setMyBookings] = useState([]);
-    const [pending, setPending] = useState([]);
+    const [orders, setOrders] = useState([]);
 
-    const URL = `https://homehealers-project-server-ten.vercel.app/myBookings?userEmail=${user?.email}`;
+    const URL = `http://localhost:4000/myBookings?userEmail=${user?.email}`;
     useEffect(()=>{
         fetch(URL)
         .then(res => res.json())
         .then(data => {
             setMyBookings(data)
-            console.log(data);
         })
     },[URL])
-    console.log(myBookings);
 
-    const bookingsURL = `https://homehealers-project-server-ten.vercel.app/bookings?providerEamil=${user.email}`;
+    const orderURL = `http://localhost:4000/orders?providerEamil=${user.email}`;
     useEffect(()=>{
-        fetch(bookingsURL)
+        fetch(orderURL)
         .then(res => res.json())
         .then(data => {
-            setPending(data)
-            console.log(data);
+            setOrders(data)
         })
-    },[bookingsURL])
+    },[orderURL])
 
     const handleDelete = id => {
         Swal.fire({
@@ -43,7 +39,7 @@ const MyShedule = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-            fetch(`https://homehealers-project-server-ten.vercel.app/bookings/${id}`, {
+            fetch(`http://localhost:4000/bookings/${id}`, {
                 method: "DELETE",
             })
             .then(res => res.json())
@@ -54,36 +50,14 @@ const MyShedule = () => {
                         text: "Your service has been deleted.",
                         icon: "success"
                       });
-                      const remaining = pending.filter(req => req._id !== id)
-                    setPending(remaining);
+                      const remaining = orders.filter(req => req._id !== id)
+                      setOrders(remaining);
                 }
             })
             }
             
           });
     }
-
-    const handleConfirm = id => {
-        fetch(`https://homehealers-project-server-ten.vercel.app/bookings/${id}`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({status: 'confirm'})
-        })
-        .then(res => res.json())
-            .then(data => {
-              console.log(data);
-              if(data.modifiedCount > 0){
-                toast('confirmed service')
-                const remaining = pending.filter(booking => booking._id !== id)
-                const updated = pending.find(booking => booking._id === id)
-                updated.status = 'confirm'
-                const newBookings = [updated, ...remaining]
-                setPending(newBookings)
-              }
-            })  
-      }
 
     return (
         <div>
@@ -94,13 +68,14 @@ const MyShedule = () => {
             </Helmet>
             <h1 className="font-bold text-3xl text-center mt-14 mb-2">My Bookings</h1>
             {
-                myBookings.length > 0 ? myBookings?.map(booking => <MySheduleCard key={booking?._id} booking={booking}/>) : <div><h1 className="text-center my-9 text-2xl font-semibold">No Bookings added</h1></div>
+                myBookings?.length > 0 ? myBookings?.map(booking => <MySheduleCard key={booking?._id} booking={booking}/>) : <div><h1 className="text-center my-9 text-2xl font-semibold">No Bookings added</h1></div>
             }
             <h1 className="font-bold text-3xl text-center mt-14 mb-2">My pending work</h1>
             <div className="my-11">
             <div className="overflow-x-auto">
             <div className="overflow-x-auto">
-                  <table className="table">
+                  { orders.length > 0 ?
+                    <table className="table">
                     {/* head */}
                     <thead>
                       <tr>
@@ -111,7 +86,6 @@ const MyShedule = () => {
                         </th>
                         <th>Service img</th>
                         <th>Service name</th>
-                        <th></th>
                         <th>Customer</th>
                         <th>Date</th>
                         <th>Price</th>
@@ -121,10 +95,11 @@ const MyShedule = () => {
                     <tbody>
                       {/* row 1 */}
                       {
-                        pending?.map(req => <PendingRow key={req?._id} req={req} handleDelete={handleDelete} handleConfirm={handleConfirm}/>)
+                        orders?.map(req => <PendingRow key={req?._id} req={req} handleDelete={handleDelete}/>)
                       }
                     </tbody>
-                  </table>
+                  </table> : <div><h1 className="text-center my-9 text-2xl font-semibold">No pending works</h1></div>
+                  } 
                 </div>
             </div>
         </div>

@@ -7,13 +7,13 @@ const PopularServices = () => {
     const [services, setServices] = useState();
 
     useEffect(() => {
-        fetch('https://homehealers-project-server-ten.vercel.app/services')
+        fetch('http://localhost:4000/services')
         .then(res => res.json())
         .then(data => setServices(data))
     },[])
 
     return (
-        <div className="p-5">
+        <div className="p-5 lg:p-0">
             {
                 services?.slice(0, 4).map(service => <PopularServiceCard key={service?._id} service={service}/>)
             }
