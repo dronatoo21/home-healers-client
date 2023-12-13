@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
     "awesome-react-icons": "^1.4.8",
     "firebase": "^10.5.2",
     "framer-motion": "^10.16.4",
