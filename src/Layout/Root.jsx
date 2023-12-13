@@ -15,7 +15,7 @@ const Root = () => {
             <MessengerCustomerChat
                pageId="191736287353424"
                appId="657363919934309"
-             />,
+             />
         </div>
     );
 };
