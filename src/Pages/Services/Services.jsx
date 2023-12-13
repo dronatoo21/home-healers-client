@@ -11,12 +11,12 @@ const Services = () => {
     const [dataLength, setDataLength] = useState(6)
     const handleSearch = () => {
     const filteredProducts = services?.filter((product) =>
-    product.serviceName.toLowerCase().includes(searchQuery.toLowerCase())
+    product?.serviceName?.toLowerCase()?.includes(searchQuery?.toLowerCase())
         )
         setSearchProducts(filteredProducts)
     };
 
-    console.log(searchQuery);
+    console.log(services);
 
     return (
         <div className="mb-10 mt-1 pb-7 lg:px-0 lg:pb-0">
@@ -31,10 +31,10 @@ const Services = () => {
             </div>
             <h1 className="font-bold text-3xl text-center mt-5 mb-2">All Services</h1>
             {
-               searchedProducts.length ? searchedProducts?.slice(0, dataLength).map(service => <ServiceCard key={service._id} service={service}/>) : <ServiceNotFound/>
+               searchedProducts?.length ? searchedProducts?.slice(0, dataLength).map(service => <ServiceCard key={service._id} service={service}/>) : <ServiceNotFound/>
             }
             {
-             searchedProducts.length >= 6 ? <div className={dataLength === searchedProducts.length ? "hidden" : "flex justify-center my-5"}><button onClick={() => setDataLength(searchedProducts.length)} className="btn btn-neutral">View All</button></div> : ""
+             searchedProducts?.length >= 6 ? <div className={dataLength === searchedProducts.length ? "hidden" : "flex justify-center my-5"}><button onClick={() => setDataLength(searchedProducts.length)} className="btn btn-neutral">View All</button></div> : ""
             }
         </div>
     );
