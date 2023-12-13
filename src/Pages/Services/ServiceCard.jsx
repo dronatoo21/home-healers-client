@@ -20,7 +20,7 @@ const ServiceCard = ({service}) => {
                 <h2 className="card-title font-semibold"><span className="font-medium">Service : </span>{serviceName}</h2>
                 <p className="font-normal"><span className="font-medium">Area : </span>{serviceArea}</p>
                 {
-                    description.length > 100 ? <p className="font-normal"><span className="font-medium">Description : </span>{description.slice(0,100)} <Link to="#" className="text-blue-800 font-semibold">Read more...</Link></p> : <p className="font-normal"><span className="font-medium">Description : </span>{description}</p>
+                    description?.length > 100 ? <p className="font-normal"><span className="font-medium">Description : </span>{description?.slice(0,100)} <Link to="#" className="text-blue-800 font-semibold">Read more...</Link></p> : <p className="font-normal"><span className="font-medium">Description : </span>{description}</p>
                 }
                 <p className="font-bold text-lg"><span className="font-medium">Price : </span>{price} BDT</p>
                 <div className="card-actions lg:justify-end ">
