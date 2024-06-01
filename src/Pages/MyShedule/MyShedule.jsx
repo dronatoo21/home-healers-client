@@ -66,11 +66,11 @@ const MyShedule = () => {
                 <title>HomeHealers | My shedule</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
-            <h1 className="font-bold text-3xl text-center mt-14 mb-2">My Bookings</h1>
+            <h1 className="font-bold text-xl md:text-2xl lg:text-3xl text-center mt-14 mb-2">My Bookings</h1>
             {
-                myBookings?.length > 0 ? myBookings?.map(booking => <MySheduleCard key={booking?._id} booking={booking}/>) : <div><h1 className="text-center my-9 text-2xl font-semibold">No Bookings added</h1></div>
+                myBookings?.length > 0 ? myBookings?.map(booking => <MySheduleCard key={booking?._id} booking={booking}/>) : <div><h1 className="text-center my-9 text-lg md:text-xl lg:text-2xl font-semibold">No Bookings added...</h1></div>
             }
-            <h1 className="font-bold text-3xl text-center mt-14 mb-2">My pending work</h1>
+            <h1 className="font-bold text-xl md:text-2xl lg:text-3xl text-center mt-14 mb-2">My pending work</h1>
             <div className="my-11">
             <div className="overflow-x-auto">
             <div className="overflow-x-auto">
@@ -98,7 +98,7 @@ const MyShedule = () => {
                         orders?.map(req => <PendingRow key={req?._id} req={req} handleDelete={handleDelete}/>)
                       }
                     </tbody>
-                  </table> : <div><h1 className="text-center my-9 text-2xl font-semibold">No pending works</h1></div>
+                  </table> : <div><h1 className="text-center my-2 text-lg md:text-xl lg:text-2xl font-semibold">No pending works...</h1></div>
                   } 
                 </div>
             </div>

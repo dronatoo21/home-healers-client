@@ -25,13 +25,10 @@ const MyServices = () => {
                 <title>HomeHealers | Manage services</title>
                 <link rel="canonical" href="http://mysite.com/example" />
         </Helmet>
-        <h1 className="font-bold text-3xl text-center mt-16 mb-5">Manage Services!</h1>
+        <h1 className="font-bold text-xl md:text-2xl lg:text-3xl text-center mt-5 md:mt-7 lg:mt-16 mb-5">Manage Services!</h1>
+            
             {
-                myAllServices?.length > 0 ? <div><h1 className="text-center my-9 text-2xl font-semibold">No pending works</h1></div> : 
-                <div><h1 className="text-center my-9 text-2xl font-semibold">No pending works</h1></div>
-            }
-            {
-                myAllServices?.map(myService => <MyServicesCard key={myService?._id} myService={myService} myAllServices={myAllServices} setMyAllServices={setMyAllServices}/>)
+                myAllServices?.length > 0 ? myAllServices?.map(myService => <MyServicesCard key={myService?._id} myService={myService} myAllServices={myAllServices} setMyAllServices={setMyAllServices}/>) : <div><h1 className="text-center my-9 text-lg md:text-xl lg:text-2xl font-semibold">No Services Added...</h1></div>
             }
         </div>
     );

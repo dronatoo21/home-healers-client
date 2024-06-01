@@ -48,7 +48,7 @@ const AddService = () => {
                 <link rel="canonical" href="http://mysite.com/example" />
           </Helmet>
          <div className="my-5 p-5">
-          <h1 className="text-3xl font-semibold text-center">Please Add a Service!</h1>
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold text-center">Please Add a Service!</h1>
             <div className="hero my-5 shadow-md rounded-md">
                 <div className="flex-shrink-0 w-full bg-base-100 rounded-md">
                   <form onSubmit={handleAddService} className="card-body ">

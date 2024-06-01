@@ -15,14 +15,14 @@ const Home = () => {
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <Banner/>
-            <h1 className="font-bold text-3xl text-center mt-14 mb-2">Popular Services</h1>
+            <h1 className="font-bold text-xl md:text-2xl lg:text-3xl text-center mt-14 mb-2">Popular Services</h1>
             <PopularServices/>
             <ContactUs/>
-            <h1 className="font-bold text-3xl text-center mt-16 mb-5">Find US!</h1>
+            <h1 className="font-bold text-xl md:text-2xl lg:text-3xl text-center mt-16 mb-5">Find US!</h1>
             <OurBranches/>
-            <h1 className="font-bold text-3xl text-center mt-14 mb-2">Our team</h1>
-            <OurTeam/>
             <AboutUs/>
+            <h1 className="font-bold text-xl md:text-2xl lg:text-3xl text-center mt-14 mb-2">Our team</h1>
+            <OurTeam/>
         </div>
     );
 };
