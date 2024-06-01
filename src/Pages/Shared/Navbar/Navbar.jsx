@@ -2,30 +2,31 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { toast } from "react-toastify";
+import { FaArrowDown } from 'react-icons/fa';
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext)
     const links = <>
         <li>
-            <button className="ml-2 border-2 rounded-xl font-semibold px-4 py-2 border-none bg-[#1e272e bg-[#1e272e] text-white hover:text-black">
-                <NavLink to="/">Home</NavLink>
+            <button className="ml-2 border-2 rounded-xl font-semibold px-4 py-2 border-none lg:text-black  hover:text-black">
+                <NavLink style={({ isActive })=> ({borderBottom: isActive ? "2px solid black" : " ", background: "transparent",})} to="/">Home</NavLink>
             </button>
         </li>
         <li>
-            <button className="ml-2 border-2 rounded-xl font-semibold px-4 py-2 border-none bg-[#1e272e] text-white hover:text-black">
-                <NavLink to="/services">Services</NavLink>
+            <button className="ml-2 border-2 rounded-xl font-semibold px-4 py-2 border-none lg:text-black  hover:text-black">
+                <NavLink style={({ isActive })=> ({borderBottom: isActive ? "2px solid black" : " ", background: "transparent",})} to="/services">Services</NavLink>
             </button>
         </li>
         {
             user &&
-        <li className="dropdown dropdown-bottom dropdown-end border-black border-1">
-              <label tabIndex={0} className="ml-2 border-2 rounded-xl font-semibold border-none bg-[#1e272e] text-white hover:text-black">Dashboard</label>
-              <ul tabIndex={0} className="dropdown-content z-[1] menu mt-2 p-2 shadow bg-base-100 rounded-box w-52">
-                <li><Link to="/myServices">My Services</Link></li>
-                <li><Link to="/addservice">Add Services</Link></li>
-                <li><Link to="/myBookings">My Schedules</Link></li>
-              </ul>
-        </li>
+                <li className="dropdown dropdown-bottom dropdown-end border-black border-1">
+                      <label tabIndex={0} className="ml-2 border-2 rounded-xl font-semibold border-none  lg:text-black  hover:text-black">Dashboard<FaArrowDown className="lg:hidden"/></label>
+                      <ul tabIndex={0} className="dropdown-content z-[1] menu mt-2 p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><Link to="/myServices">My Services</Link></li>
+                        <li><Link to="/addservice">Add Services</Link></li>
+                        <li><Link to="/myBookings">My Schedules</Link></li>
+                      </ul>
+                </li>
         }
     </>
     const handleLogout = () => {
@@ -37,29 +38,61 @@ const Navbar = () => {
         toast('successfully logged out')
       };
     return (
-        <div>
-            <div className="navbar h-[240px] md:h-60 gap-3 lg:h-32 bg-[#e4eef4] rounded-md md:px-10 flex flex-col lg:flex-row lg:justify-between">
-            <div>
-                <img className="w-14" src="https://i.ibb.co/bFZy9XX/logo.png" alt="logo"/>
-                <h1 className="text-2xl md:text-3xl font-bold ml-3 text-black">HomeHealers</h1>
+        // <div>
+        //     <div className="navbar gap-3 bg-[#e4eef4] rounded-md md:px-10 flex flex-col lg:flex-row lg:justify-between">
+        //     <div>
+        //         <img className="w-7 md:w-10 lg:w-14" src="https://i.ibb.co/bFZy9XX/logo.png" alt="logo"/>
+        //         <h1 className="text-lg md:text-2xl lg::text-3xl font-bold ml-3 text-black">HomeHealers</h1>
+        //     </div>
+        //     <div className="lg:-ml-14">
+        //         <ul className="menu menu-horizontal px-1">
+        //             {links}
+        //         </ul>
+        //     </div>
+        //         <div className="items-center">
+        //             {
+        //                 user ? <>
+        //                 <button onClick={handleLogout} className="mx-2 border-2 btn border-none hover:text-[black] rounded-xl font-semibold bg-gray-800 text-white">Logout</button>
+        //                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+        //                     <img className="rounded-full" src={user?.photoURL} alt="img" />
+        //                     <p className="w-16">{user?.displayName?.split(' ').pop()}</p>
+        //                 </label>                 
+        //             </> : <Link to="/login"><button className="mx-2 border-2 btn border-none hover:text-[black] rounded-xl font-semibold bg-gray-800 text-white">Login</button></Link>
+        //             }
+        //         </div>
+        //     </div>
+        // </div>
+        <div className="navbar bg-[#e4eef4] px-5 py-6">
+          <div className="navbar-start">
+            <div className="dropdown">
+              <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+              </div>
+              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                {links}
+              </ul>
             </div>
-            <div className="lg:-ml-14">
-                <ul className="menu menu-horizontal px-1">
-                    {links}
-                </ul>
-            </div>
-                <div className="items-center">
+            <img className="w-7 md:w-10 lg:w-14" src="https://i.ibb.co/bFZy9XX/logo.png" alt="logo"/>
+            <h1 className="text-lg md:text-2xl lg::text-3xl font-bold ml-3 text-black">HomeHealers</h1>
+          </div>
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">
+             {links}
+            </ul>
+          </div>
+          <div className="navbar-end">
+          <div className="items-center">
                     {
-                        user ? <>
-                        <button onClick={handleLogout} className="mx-2 border-2 btn border-none hover:text-[black] rounded-xl font-semibold bg-gray-800 text-white">Logout</button>
+                        user ? <div className="flex items-center">
+                        <button onClick={handleLogout} className="mx-2 border-2 btn border-none lg:flex hidden hover:text-[black] rounded-xl font-semibold bg-gray-800 text-white">Logout</button>
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <img className="rounded-full" src={user?.photoURL} alt="img" />
-                            <p className="w-16">{user?.displayName}</p>
+                            <p className="w-16">{user?.displayName?.split(' ').pop()}</p>
                         </label>                 
-                    </> : <Link to="/login"><button className="mx-2 border-2 btn border-none hover:text-[black] rounded-xl font-semibold bg-gray-800 text-white">Login</button></Link>
+                    </div> : <Link to="/login"><button className="mx-2 border-2 btn border-none hover:text-[black] rounded-xl font-semibold bg-gray-800 text-white">Login</button></Link>
                     }
                 </div>
-            </div>
+          </div>
         </div>
     );
 };
