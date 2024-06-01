@@ -19,7 +19,7 @@ const MyServices = () => {
     },[URL])
 
     return (
-        <div className="my-10 p-5 lg:p-0">
+        <div className="my-10 p-5 lg:p-0 min-h-[50vh]">
         <Helmet>
                 <meta charSet="utf-8" />
                 <title>HomeHealers | Manage services</title>
@@ -27,7 +27,11 @@ const MyServices = () => {
         </Helmet>
         <h1 className="font-bold text-3xl text-center mt-16 mb-5">Manage Services!</h1>
             {
-                myAllServices?.map(myService => <MyServicesCard key={myService?._id} myService={myService} myAllServices={myAllServices}  setMyAllServices={setMyAllServices}/>)
+                myAllServices?.length > 0 ? <div><h1 className="text-center my-9 text-2xl font-semibold">No pending works</h1></div> : 
+                <div><h1 className="text-center my-9 text-2xl font-semibold">No pending works</h1></div>
+            }
+            {
+                myAllServices?.map(myService => <MyServicesCard key={myService?._id} myService={myService} myAllServices={myAllServices} setMyAllServices={setMyAllServices}/>)
             }
         </div>
     );

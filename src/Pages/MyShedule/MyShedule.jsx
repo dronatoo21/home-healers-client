@@ -60,7 +60,7 @@ const MyShedule = () => {
     }
 
     return (
-        <div>
+        <div className="min-h-[50vh]">
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>HomeHealers | My shedule</title>

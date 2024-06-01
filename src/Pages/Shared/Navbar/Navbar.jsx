@@ -38,31 +38,7 @@ const Navbar = () => {
         toast('successfully logged out')
       };
     return (
-        // <div>
-        //     <div className="navbar gap-3 bg-[#e4eef4] rounded-md md:px-10 flex flex-col lg:flex-row lg:justify-between">
-        //     <div>
-        //         <img className="w-7 md:w-10 lg:w-14" src="https://i.ibb.co/bFZy9XX/logo.png" alt="logo"/>
-        //         <h1 className="text-lg md:text-2xl lg::text-3xl font-bold ml-3 text-black">HomeHealers</h1>
-        //     </div>
-        //     <div className="lg:-ml-14">
-        //         <ul className="menu menu-horizontal px-1">
-        //             {links}
-        //         </ul>
-        //     </div>
-        //         <div className="items-center">
-        //             {
-        //                 user ? <>
-        //                 <button onClick={handleLogout} className="mx-2 border-2 btn border-none hover:text-[black] rounded-xl font-semibold bg-gray-800 text-white">Logout</button>
-        //                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        //                     <img className="rounded-full" src={user?.photoURL} alt="img" />
-        //                     <p className="w-16">{user?.displayName?.split(' ').pop()}</p>
-        //                 </label>                 
-        //             </> : <Link to="/login"><button className="mx-2 border-2 btn border-none hover:text-[black] rounded-xl font-semibold bg-gray-800 text-white">Login</button></Link>
-        //             }
-        //         </div>
-        //     </div>
-        // </div>
-        <div className="navbar bg-[#e4eef4] px-5 py-6">
+        <div className="navbar bg-[#e4eef4] px-2 md:px-5 py-6">
           <div className="navbar-start">
             <div className="dropdown">
               <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -73,7 +49,7 @@ const Navbar = () => {
               </ul>
             </div>
             <img className="w-7 md:w-10 lg:w-14" src="https://i.ibb.co/bFZy9XX/logo.png" alt="logo"/>
-            <h1 className="text-lg md:text-2xl lg::text-3xl font-bold ml-3 text-black">HomeHealers</h1>
+            <h1 className="text-xl md:text-2xl lg::text-3xl font-bold ml-3 text-black">HomeHealers</h1>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
