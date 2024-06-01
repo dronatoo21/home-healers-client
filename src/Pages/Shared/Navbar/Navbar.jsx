@@ -38,7 +38,7 @@ const Navbar = () => {
         toast('successfully logged out')
       };
     return (
-        <div className="navbar bg-[#e4eef4] px-2 md:px-5 py-6">
+        <div className="navbar bg-[#e4eef4] pl-2 md:pr-12 pr-10 lg:px-10 py-6">
           <div className="navbar-start">
             <div className="dropdown">
               <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -59,11 +59,11 @@ const Navbar = () => {
           <div className="navbar-end">
           <div className="items-center">
                     {
-                        user ? <div className="flex items-center">
+                        user ? <div className="flex items-center gap-2">
                         <button onClick={handleLogout} className="mx-2 border-2 btn border-none lg:flex hidden hover:text-[black] rounded-xl font-semibold bg-gray-800 text-white">Logout</button>
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <img className="rounded-full" src={user?.photoURL} alt="img" />
-                            <p className="w-16">{user?.displayName?.split(' ').pop()}</p>
+                            <p className="w-16 text-center">{user?.displayName?.split(' ').pop()}</p>
                         </label>                 
                     </div> : <Link to="/login"><button className="mx-2 border-2 btn border-none hover:text-[black] rounded-xl font-semibold bg-gray-800 text-white">Login</button></Link>
                     }
