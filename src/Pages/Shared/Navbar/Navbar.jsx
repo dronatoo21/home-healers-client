@@ -6,6 +6,14 @@ import { FaArrowDown } from 'react-icons/fa';
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext)
+    const handleLogout = () => {
+      logout()
+      .then(res => {
+        console.log(res.user);
+      })
+      .catch(error => console.log(error));
+      toast('successfully logged out')
+    };
     const links = <>
         <li>
             <button className="ml-2 border-2 rounded-xl font-semibold px-4 py-2 border-none lg:text-black  hover:text-black">
@@ -18,9 +26,12 @@ const Navbar = () => {
             </button>
         </li>
         {
+        user ? <li className="lg:hidden"><Link onClick={handleLogout} className="lg:btn btn-sm border-none px-4 text-black bg-white lg:text-white ml-2 rounded-xl font-semibold" >Logout</Link></li> : <li className="lg:hidden"><Link to="/login" className="lg:btn px-4 btn-sm border-none text-black bg-white lg:text-white ml-2 rounded-xl font-semibold" >Login</Link></li>
+        }
+        {
             user &&
                 <li className="dropdown dropdown-bottom dropdown-end border-black border-1">
-                      <label tabIndex={0} className="ml-2 border-2 rounded-xl font-semibold border-none  lg:text-black  hover:text-black">Dashboard<FaArrowDown className="lg:hidden"/></label>
+                      <label tabIndex={0} className="ml-2 border-2 rounded-xl font-semibold border-none  lg:text-black px-4 hover:text-black">Dashboard<FaArrowDown className="lg:hidden"/></label>
                       <ul tabIndex={0} className="dropdown-content z-[1] menu mt-2 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to="/myServices">My Services</Link></li>
                         <li><Link to="/addservice">Add Services</Link></li>
@@ -29,16 +40,9 @@ const Navbar = () => {
                 </li>
         }
     </>
-    const handleLogout = () => {
-        logout()
-        .then(res => {
-          console.log(res.user);
-        })
-        .catch(error => console.log(error));
-        toast('successfully logged out')
-      };
+    
     return (
-        <div className="navbar bg-[#e4eef4] pl-2 md:pr-12 pr-10 lg:px-10 py-6">
+        <div className="navbar bg-[#e4eef4] px-5 md:px-2 lg:px-10 py-6">
           <div className="navbar-start">
             <div className="dropdown">
               <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -63,9 +67,9 @@ const Navbar = () => {
                         <button onClick={handleLogout} className="mx-2 border-2 btn border-none lg:flex hidden hover:text-[black] rounded-xl font-semibold bg-gray-800 text-white">Logout</button>
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <img className="rounded-full" src={user?.photoURL} alt="img" />
-                            <p className="w-16 text-center">{user?.displayName?.split(' ').pop()}</p>
+                            <p className="text-center">{user?.displayName?.split(' ').pop()}</p>
                         </label>                 
-                    </div> : <Link to="/login"><button className="mx-2 border-2 btn border-none hover:text-[black] rounded-xl font-semibold bg-gray-800 text-white">Login</button></Link>
+                    </div> : <Link to="/login"><button className="mx-2 border-2 md:btn-md btn-sm btn border-none hover:text-[black] rounded-xl font-semibold bg-gray-800 text-white">Login</button></Link>
                     }
                 </div>
           </div>
