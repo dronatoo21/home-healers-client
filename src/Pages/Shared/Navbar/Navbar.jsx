@@ -40,7 +40,6 @@ const Navbar = () => {
                 </li>
         }
     </>
-    
     return (
         <div className="navbar bg-[#e4eef4] px-5 md:px-2 lg:px-10 py-6">
           <div className="navbar-start">
